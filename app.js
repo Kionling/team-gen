@@ -95,6 +95,36 @@ function intern(){
     ]).then(function(input){
         let newIntern = new Intern(input.name, input.email,input.id,input.school)
         generateTeam.push(newEngin)
+        init();
+    })
+}
+
+function manager(){
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "What's your name? ",
+            name: "name"
+        },
+        {
+            type: "input",
+            message: "What is your id",
+            name: "id"
+        },
+        {
+            type: "input",
+            message: "What is your email",
+            name: "email"
+        },
+        {
+            type: "input",
+            message: "What is your office number",
+            name: "officeNumber"
+        }
+    ]).then(function(input){
+        let newManager = new Manager(input.name,input.id,input.email,input.officeNumber)
+        generateTeam.push(newManager)
+        init();
     })
 }
 
