@@ -15,13 +15,19 @@ const Choice = require("inquirer/lib/objects/choice");
 generateTeam = [];
 //function that initializes the entire thing
 function init(){
+    //initial prompt
     inquirer.prompt([
         {
             type: "list",
             message:"What is role?",
-            choices: []
+            name: "employeeType",
+            choices: ["Manager", "Engineer", "Intern", "Finished"]
+        },
+    ]).then(teamMember => {
+        switch (teamMember.employeeType) {
+            case "Engineer":
         }
-    ])
+    })
 
 }
 
