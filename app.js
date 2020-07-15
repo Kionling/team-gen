@@ -26,6 +26,11 @@ function init(){
     ]).then(teamMember => {
         switch (teamMember.employeeType) {
             case "Engineer":
+                break;
+            case "Intern":
+                break;
+            case "Manager":
+                break;
         }
     })
 
