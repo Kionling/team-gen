@@ -31,9 +31,36 @@ function init(){
                 break;
             case "Manager":
                 break;
+            case "Finished":
+                break;
         }
     })
 
+}
+
+function engineer(){
+    inquirer.prompt([
+        {
+        type: "input",
+        messsage: "What is your name",
+        name: 'name',
+        },
+        {
+            type: "input",
+            message: "What's your ID?",
+            name: "id",
+        },
+        {
+            type: "input",
+            message: "What's your email",
+            name: "email"
+        },
+        {
+            type: "input",
+            message: "What is your gihub username",
+            name: "github"
+        },
+    ])
 }
 
 
