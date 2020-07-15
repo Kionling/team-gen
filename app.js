@@ -12,7 +12,7 @@ const render = require("./lib/htmlRenderer");
 const { listenerCount } = require("process");
 const Choice = require("inquirer/lib/objects/choice");
 //empty array to generate team
-generateTeam = [];
+var generateTeam = [];
 //function that initializes the entire thing
 function init(){
     //initial prompt
@@ -65,8 +65,14 @@ function engineer(){
             name: "github"
         },
     ]).then(function(input){
-        let newEngin = new Engineer(input.name, input.id, input.email,input.github)
-        generateTeam.push(newEngin)
+        // var newEngin = new Engineer(input.name, input.id, input.email,input.github)
+        // generateTeam.push(newEngin)
+        var newName = input.name;
+        var newEmail = input.email;
+        var newId = input.id;
+        var newGithub = input.github;
+        var newEngineer = new Engineer (newName, newId, newEmail, newGithub)
+        generateTeam.push(newEngineer)
         init();
 
     })
@@ -97,8 +103,12 @@ function intern(){
         }
 
     ]).then(function(input){
-        let newIntern = new Intern(input.name, input.email,input.id,input.school)
-        generateTeam.push(newEngin)
+        var newName = input.name;
+        var newEmail = input.email;
+        var newId = input.id;
+        var newSchool= input.school;
+        var newIntern = new Intern (newName, newId, newEmail, newSchool)
+        generateTeam.push(newIntern)
         init();
     })
 }
@@ -126,7 +136,11 @@ function manager(){
             name: "officeNumber"
         }
     ]).then(function(input){
-        let newManager = new Manager(input.name,input.id,input.email,input.officeNumber)
+        var newName = input.name;
+        var newEmail = input.email;
+        var newId = input.id;
+        var newOfficeNumber = input.officeNumber;
+        var newManager = new Manager (newName, newId, newEmail, newOfficeNumber)
         generateTeam.push(newManager)
         init();
     })
@@ -134,8 +148,9 @@ function manager(){
 
 function generateTeamList() {
     if(!fs.existsSync(OUTPUT_DIR)){
-        fs.mkdirSync(outputPath, render(generateTeam, "utf-8"))
+        fs.mkdirSync(OUTPUT_DIR)
     }
+    fs.writeFileSync(outputPath, render(generateTeam), "utf-8")
 }
 init();
 
