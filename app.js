@@ -128,6 +128,12 @@ function manager(){
     })
 }
 
+function generateTeamList() {
+    if(!fs.existsSync(OUTPUT_DIR)){
+        fs.mkdirSync(outputPath, render(generateTeam, "utf-8"))
+    }
+}
+init();
 
 
 
