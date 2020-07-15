@@ -69,6 +69,37 @@ function engineer(){
 
 }
 
+function intern(){
+    inquirer.prompt([
+        {
+            type: "Input",
+            message: "What is your name?",
+            name: "name"
+        },
+        {
+            type: "Input",
+            message: "What is your email",
+            name: "email"
+        },
+        {
+            type: 'input',
+            message: "What is your ID",
+            name: "id"
+        },
+        {
+            type: "input",
+            message:"School:",
+            name: "school"
+        }
+
+    ]).then(function(input){
+        let newIntern = new Intern(input.name, input.email,input.id,input.school)
+        generateTeam.push(newEngin)
+    })
+}
+
+
+
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
