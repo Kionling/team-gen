@@ -9,9 +9,21 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
-
+const { listenerCount } = require("process");
+const Choice = require("inquirer/lib/objects/choice");
+//empty array to generate team
 generateTeam = [];
+//function that initializes the entire thing
+function init(){
+    inquirer.prompt([
+        {
+            type: "list",
+            message:"What is role?",
+            choices: []
+        }
+    ])
 
+}
 
 
 // Write code to use inquirer to gather information about the development team members,
