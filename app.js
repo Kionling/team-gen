@@ -60,7 +60,13 @@ function engineer(){
             message: "What is your gihub username",
             name: "github"
         },
-    ])
+    ]).then(function(input){
+        let newEngin = new Engineer(input.name, input.id, input.email,input.github)
+        generateTeam.push(newEngin)
+        init();
+
+    })
+
 }
 
 
