@@ -14,147 +14,149 @@ const Choice = require("inquirer/lib/objects/choice");
 //empty array to generate team
 var generateTeam = [];
 //function that initializes the entire thing
-function init(){
-    //initial prompt
-    inquirer.prompt([
-        {
-            type: "list",
-            message:"What is role?",
-            name: "employeeType",
-            choices: ["Manager", "Engineer", "Intern", "Finished"]
-        },
-    ]).then(teamMember => {
-        switch (teamMember.employeeType) {
-            case "Engineer":
-                engineer();
-                break;
-            case "Intern":
-                intern();
-                break;
-            case "Manager":
-                manager();
-                break;
-            case "Finished":
-                generateTeamList();
-                break;
-        }
-    })
-
+function init() {
+  //initial prompt
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        message: "What is role?",
+        name: "employeeType",
+        choices: ["Manager", "Engineer", "Intern", "Finished"],
+      },
+    ])
+    .then((teamMember) => {
+      switch (teamMember.employeeType) {
+        case "Engineer":
+          engineer();
+          break;
+        case "Intern":
+          intern();
+          break;
+        case "Manager":
+          manager();
+          break;
+        case "Finished":
+          generateTeamList();
+          break;
+      }
+    });
 }
 
-function engineer(){
-    inquirer.prompt([
-        {
+function engineer() {
+  inquirer
+    .prompt([
+      {
         type: "input",
         messsage: "What is your name",
-        name: 'name',
-        },
-        {
-            type: "input",
-            message: "What's your ID?",
-            name: "id",
-        },
-        {
-            type: "input",
-            message: "What's your email",
-            name: "email"
-        },
-        {
-            type: "input",
-            message: "What is your gihub username",
-            name: "github"
-        },
-    ]).then(function(input){
-        // var newEngin = new Engineer(input.name, input.id, input.email,input.github)
-        // generateTeam.push(newEngin)
-        var newName = input.name;
-        var newEmail = input.email;
-        var newId = input.id;
-        var newGithub = input.github;
-        var newEngineer = new Engineer (newName, newId, newEmail, newGithub)
-        generateTeam.push(newEngineer)
-        init();
-
-    })
-
+        name: "name",
+      },
+      {
+        type: "input",
+        message: "What's your ID?",
+        name: "id",
+      },
+      {
+        type: "input",
+        message: "What's your email",
+        name: "email",
+      },
+      {
+        type: "input",
+        message: "What is your gihub username",
+        name: "github",
+      },
+    ])
+    .then(function (input) {
+      // var newEngin = new Engineer(input.name, input.id, input.email,input.github)
+      // generateTeam.push(newEngin)
+      var newName = input.name;
+      var newEmail = input.email;
+      var newId = input.id;
+      var newGithub = input.github;
+      var newEngineer = new Engineer(newName, newId, newEmail, newGithub);
+      generateTeam.push(newEngineer);
+      init();
+    });
 }
 
-function intern(){
-    inquirer.prompt([
-        {
-            type: "Input",
-            message: "What is your name?",
-            name: "name"
-        },
-        {
-            type: "Input",
-            message: "What is your email",
-            name: "email"
-        },
-        {
-            type: 'input',
-            message: "What is your ID",
-            name: "id"
-        },
-        {
-            type: "input",
-            message:"School:",
-            name: "school"
-        }
-
-    ]).then(function(input){
-        var newName = input.name;
-        var newEmail = input.email;
-        var newId = input.id;
-        var newSchool= input.school;
-        var newIntern = new Intern (newName, newId, newEmail, newSchool)
-        generateTeam.push(newIntern)
-        init();
-    })
+function intern() {
+  inquirer
+    .prompt([
+      {
+        type: "Input",
+        message: "What is your name?",
+        name: "name",
+      },
+      {
+        type: "Input",
+        message: "What is your email",
+        name: "email",
+      },
+      {
+        type: "input",
+        message: "What is your ID",
+        name: "id",
+      },
+      {
+        type: "input",
+        message: "School:",
+        name: "school",
+      },
+    ])
+    .then(function (input) {
+      var newName = input.name;
+      var newEmail = input.email;
+      var newId = input.id;
+      var newSchool = input.school;
+      var newIntern = new Intern(newName, newId, newEmail, newSchool);
+      generateTeam.push(newIntern);
+      init();
+    });
 }
 
-function manager(){
-    inquirer.prompt([
-        {
-            type: "input",
-            message: "What's your name? ",
-            name: "name"
-        },
-        {
-            type: "input",
-            message: "What is your id",
-            name: "id"
-        },
-        {
-            type: "input",
-            message: "What is your email",
-            name: "email"
-        },
-        {
-            type: "input",
-            message: "What is your office number",
-            name: "officeNumber"
-        }
-    ]).then(function(input){
-        var newName = input.name;
-        var newEmail = input.email;
-        var newId = input.id;
-        var newOfficeNumber = input.officeNumber;
-        var newManager = new Manager (newName, newId, newEmail, newOfficeNumber)
-        generateTeam.push(newManager)
-        init();
-    })
+function manager() {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        message: "What's your name? ",
+        name: "name",
+      },
+      {
+        type: "input",
+        message: "What is your id",
+        name: "id",
+      },
+      {
+        type: "input",
+        message: "What is your email",
+        name: "email",
+      },
+      {
+        type: "input",
+        message: "What is your office number",
+        name: "officeNumber",
+      },
+    ])
+    .then(function (input) {
+      var newName = input.name;
+      var newEmail = input.email;
+      var newId = input.id;
+      var newOfficeNumber = input.officeNumber;
+      var newManager = new Manager(newName, newId, newEmail, newOfficeNumber);
+      generateTeam.push(newManager);
+      init();
+    });
 }
 
 function generateTeamList() {
-    if(!fs.existsSync(OUTPUT_DIR)){
-        fs.mkdirSync(OUTPUT_DIR)
-    }
-    fs.writeFileSync(outputPath, render(generateTeam), "utf-8")
+  if (!fs.existsSync(OUTPUT_DIR)) {
+    fs.mkdirSync(OUTPUT_DIR);
+  }
+  fs.writeFileSync(outputPath, render(generateTeam), "utf-8");
 }
 init();
-
-
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
